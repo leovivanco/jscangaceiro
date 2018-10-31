@@ -1,0 +1,97 @@
+<style>
+    .lt-opacity,
+    .lt-wrap {
+        display: none;
+    }
+
+    .lt-opacity {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 1000000000;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, .6);
+    }
+
+    .lt-wrap {
+        position: absolute;
+        z-index: 10000000001;
+        top: 52%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #000;
+        font-size: 17px;
+        background-color: #fff;
+        padding: 2rem;
+    }
+
+    .lt-wrap p {
+        margin-bottom: 1rem;
+    }
+
+    .lt-wrap h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .lt-wrap .bt-fechar {
+        position: absolute;
+        right: -9px;
+        top: -9px;
+        background-color: #000;
+        color: #fff;
+        padding: .41rem;
+        border-radius: 100%;
+        height: 20px;
+        width: 20px;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .lt-text {
+        max-height: 400px;
+        overflow: auto;
+    }
+    .bt-confira-regra{
+        color: #fff;
+        float: right;
+        text-decoration: none;
+    }
+</style>
+
+<div class="lt-opacity"></div>
+<div class="lt-wrap">
+    <div class="lt-text">
+        <h1>Regulamento</h1>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur nihil illo rerum harum optio ducimus delectus modi distinctio, a ratione.</p>
+        <p>Dignissimos, nihil, totam praesentium repellat unde repudiandae tempore illo suscipit modi aliquid natus cupiditate ea animi voluptate. Temporibus, non quaerat?</p>
+        <p>Esse vel earum veniam incidunt et blanditiis aliquam velit consequatur aliquid magnam, ut enim. Deleniti mollitia suscipit esse dolore in.</p>
+        <p>Eligendi, maxime. In exercitationem praesentium quisquam eligendi distinctio vel esse mollitia, suscipit sit rem adipisci? Rerum accusantium et quidem asperiores.</p>
+        <p>Facilis facere, vel cupiditate vero alias repellendus dolorem impedit ipsum excepturi, officiis corporis omnis tempora earum accusamus architecto hic commodi?</p>
+        <a href="#" class="bt-fechar">X</a>
+    </div>
+</div>
+
+
+
+<script>
+
+    $('body').on('click', '.lt-wrap .bt-fechar, .lt-opacity', function() {
+        $('.lt-wrap, .lt-opacity').hide();
+    });
+
+    $('body').on('click', '.bt-confira-regra', function(e) {
+        e.preventDefault();
+        $('.lt-wrap, .lt-opacity').show();
+    });
+</script>
+
+
+
+
+<div class="camp-esquenta-blackfriday">
+    <a href="https://esportes.centauro.com.br/ppc/list-Estampa"><img src="https://imgcentauro-a.akamaihd.net/banners/rotativos/Home/20181101-ESQUENTA/TESTE-HeadEsquenta.jpg"
+            style="width:100%;"></a>
+    <a href="#" class="bt-confira-regra">*Confira as regras</a>
+</div>
