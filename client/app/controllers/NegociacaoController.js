@@ -4,23 +4,17 @@ class NegociacaoController {
         this._inputData = $('#data');
         this._inputQuantidade = $('#quantidade');
         this._inputValor = $('#valor');
-        this._negociacoes = ProxyFactory.create(
+        this._negociacoes = new Bind(
             new Negociacoes(),
-            ['adiciona', 'esvazia'],
-            model => this._negociacoesView.update(model)
+            new NegociacoesView('#negociacoes'),
+            'adiciona', 'esvazia'
         );
-
-
-        this._negociacoesView = new NegociacoesView('#negociacoes');
-        // recebe inicialmente, o modelo que encapsula uma lista vazia
-        this._negociacoesView.update(this._negociacoes);
-        this._negociacoes = ProxyFactory.create(
+        this._mensagem = new Bind(
             new Mensagem(),
-            ['texto'],
-            model => this._mensagemView.update(model)
+            new MensagemView('#mensagemView'),
+            'texto'
         );
-        this._mensagemView = new MensagemView('#mensagemView');
-        
+
 
     }
     
@@ -31,12 +25,22 @@ class NegociacaoController {
         this._inputData.focus();
     }
     adiciona(event) {
-        event.preventDefault();
-        this._negociacoes.adiciona(this._criaNegociacao());
-        this._mensagem._texto = 'Negociação adicionada com sucesso'
-        
-        this._limpaFormulario();
+        try {
+            event.preventDefault();
+            this._negociacoes.adiciona(this._criaNegociacao());
+            this._mensagem._texto = 'Negociação adicionada com sucesso'
+            
+            this._limpaFormulario();
 
+            global()
+        } catch (err) {
+            console.log(err);
+            if (err instanceof DataInvalidaException) {
+                this._mensagem.texto = err.message                
+            }else{
+                this._mensagem.texto = 'Um erro não esperado aconteceu.Entre em contato com o suporte';
+            }
+        }    
     }
     _criaNegociacao() {
         //	retorna	uma	instância	de	negociação
