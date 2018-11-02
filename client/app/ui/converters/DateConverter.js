@@ -8,8 +8,10 @@ class DateConverter {
     static paraData(texto){
         
         if (!/\d{2}\/\d{2}\/\d{4}/.test(texto))
-            throw new Error('A data deve estar no formato dd/mm/aaa');
-            return new Date(...texto.split('/')
+            throw new DataInvalidaException();
+            
+        
+        return new Date(...texto.split('/')
             .reverse()
             .map((item, index) => item - index % 2)
         )
